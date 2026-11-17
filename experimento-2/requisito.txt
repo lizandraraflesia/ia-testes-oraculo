@@ -1,0 +1,5 @@
+Regras de desconto do pedido:
+- Pedidos a partir de R$ 200,00 recebem 10% de desconto.
+- Clientes VIP recebem 5% de desconto.
+- O cliente pode aplicar um cupom de desconto com valor fixo em reais.
+- O valor final é arredondado para 2 casas decimais.

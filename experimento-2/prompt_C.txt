@@ -1,0 +1,9 @@
+Gere testes unitários com pytest para a função calcular_total(subtotal, vip=False, cupom=0.0), que está no arquivo pedido.py (import: from pedido import calcular_total). Você não tem acesso à implementação.
+
+Regras de desconto do pedido:
+- Pedidos a partir de R$ 200,00 recebem 10% de desconto.
+- Clientes VIP recebem 5% de desconto.
+- O cliente pode aplicar um cupom de desconto com valor fixo em reais.
+- O valor final é arredondado para 2 casas decimais.
+
+Coloque o arquivo de testes completo em um único bloco de código python.

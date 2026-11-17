@@ -1,0 +1,9 @@
+Gere testes unitários com pytest para a função abaixo, que está no arquivo desconto.py.
+Requisito de negócio: pedidos a partir de R$ 100,00 recebem 10% de desconto. O valor final deve ser arredondado para 2 casas decimais.
+Responda apenas com o código Python do arquivo de testes, sem explicações e sem cercas de markdown.
+
+def calcular_desconto(total):
+    """Calcula o valor final do pedido com desconto."""
+    if total > 100:
+        return round(total * 0.9, 2)
+    return total

@@ -1,0 +1,192 @@
+"""
+Testes unitários para calcular_total(subtotal, vip=False, cupom=0.0).
+
+Regras de negócio:
+- Pedidos a partir de R$ 200,00 recebem 10% de desconto.
+- Clientes VIP recebem 5% de desconto.
+- O cliente pode aplicar um cupom de desconto com valor fixo em reais.
+- O valor final é arredondado para 2 casas decimais.
+
+SUPOSIÇÕES (a especificação não define estes pontos; confirme com o PO):
+- S1: Os descontos percentuais são somados (10% + 5% = 15% sobre o subtotal).
+- S2: O cupom é subtraído depois dos descontos percentuais.
+- S3: O limite de R$ 200,00 é verificado sobre o subtotal original.
+"""
+
+import pytest
+
+from pedido import calcular_total
+
+
+# ---------------------------------------------------------------------------
+# Sem nenhum desconto
+# ---------------------------------------------------------------------------
+class TestSemDesconto:
+    @pytest.mark.parametrize(
+        "subtotal, esperado",
+        [
+            (0.0, 0.0),
+            (0.01, 0.01),
+            (50.0, 50.0),
+            (100.0, 100.0),
+            (199.99, 199.99),  # imediatamente abaixo do limite
+        ],
+    )
+    def test_subtotal_abaixo_de_200_sem_vip_sem_cupom_nao_tem_desconto(
+        self, subtotal, esperado
+    ):
+        assert calcular_total(subtotal) == esperado
+
+    def test_valores_padrao_de_vip_e_cupom(self):
+        # vip=False e cupom=0.0 por padrão: chamada explícita deve dar o mesmo
+        assert calcular_total(150.0) == calcular_total(150.0, vip=False, cupom=0.0)
+
+
+# ---------------------------------------------------------------------------
+# Desconto de 10% para pedidos a partir de R$ 200,00
+# ---------------------------------------------------------------------------
+class TestDescontoPorValor:
+    def test_exatamente_200_recebe_10_por_cento(self):
+        # "a partir de" => limite inclusivo
+        assert calcular_total(200.0) == 180.0
+
+    def test_um_centavo_abaixo_do_limite_nao_recebe_desconto(self):
+        assert calcular_total(199.99) == 199.99
+
+    def test_um_centavo_acima_do_limite_recebe_desconto(self):
+        # 200.01 * 0.90 = 180.009 -> 180.01
+        assert calcular_total(200.01) == 180.01
+
+    @pytest.mark.parametrize(
+        "subtotal, esperado",
+        [
+            (250.0, 225.0),
+            (500.0, 450.0),
+            (1000.0, 900.0),
+        ],
+    )
+    def test_valores_acima_de_200_recebem_10_por_cento(self, subtotal, esperado):
+        assert calcular_total(subtotal) == esperado
+
+
+# ---------------------------------------------------------------------------
+# Desconto de 5% para cliente VIP
+# ---------------------------------------------------------------------------
+class TestDescontoVip:
+    @pytest.mark.parametrize(
+        "subtotal, esperado",
+        [
+            (100.0, 95.0),
+            (20.0, 19.0),
+            (12.34, 11.72),     # 11.723 -> 11.72
+            (199.99, 189.99),   # 189.9905 -> 189.99
+        ],
+    )
+    def test_vip_abaixo_de_200_recebe_5_por_cento(self, subtotal, esperado):
+        assert calcular_total(subtotal, vip=True) == esperado
+
+    def test_vip_false_nao_aplica_desconto(self):
+        assert calcular_total(100.0, vip=False) == 100.0
+
+    def test_vip_com_subtotal_zero(self):
+        assert calcular_total(0.0, vip=True) == 0.0
+
+
+# ---------------------------------------------------------------------------
+# Cupom de valor fixo
+# ---------------------------------------------------------------------------
+class TestCupom:
+    @pytest.mark.parametrize(
+        "subtotal, cupom, esperado",
+        [
+            (100.0, 10.0, 90.0),
+            (100.0, 0.0, 100.0),
+            (50.5, 0.5, 50.0),
+            (150.0, 49.99, 100.01),
+            (100.0, 100.0, 0.0),  # cupom igual ao total
+        ],
+    )
+    def test_cupom_subtrai_valor_fixo_em_reais(self, subtotal, cupom, esperado):
+        assert calcular_total(subtotal, cupom=cupom) == esperado
+
+    def test_cupom_zero_nao_altera_total(self):
+        assert calcular_total(120.0, cupom=0.0) == calcular_total(120.0)
+
+
+# ---------------------------------------------------------------------------
+# Arredondamento para 2 casas decimais
+# ---------------------------------------------------------------------------
+class TestArredondamento:
+    @pytest.mark.parametrize(
+        "subtotal, esperado",
+        [
+            (123.456, 123.46),
+            (33.333, 33.33),
+            (99.999, 100.0),
+        ],
+    )
+    def test_arredonda_para_duas_casas_sem_desconto(self, subtotal, esperado):
+        assert calcular_total(subtotal) == esperado
+
+    def test_arredonda_apos_desconto_de_10_por_cento(self):
+        # 222.22 * 0.90 = 199.998 -> 200.0
+        assert calcular_total(222.22) == 200.0
+
+    def test_arredonda_apos_desconto_vip(self):
+        # 12.34 * 0.95 = 11.723 -> 11.72
+        assert calcular_total(12.34, vip=True) == 11.72
+
+    @pytest.mark.parametrize(
+        "subtotal, vip, cupom",
+        [
+            (123.456, False, 0.0),
+            (210.37, False, 0.0),
+            (77.77, True, 0.0),
+            (333.33, True, 1.11),
+            (0.1 + 0.2, False, 0.0),  # 0.30000000000000004
+        ],
+    )
+    def test_resultado_tem_no_maximo_duas_casas_decimais(self, subtotal, vip, cupom):
+        resultado = calcular_total(subtotal, vip=vip, cupom=cupom)
+        assert round(resultado, 2) == resultado
+
+    def test_imprecisao_de_ponto_flutuante_e_corrigida(self):
+        assert calcular_total(0.1 + 0.2) == 0.3
+
+    def test_retorna_numero(self):
+        assert isinstance(calcular_total(100.0), (int, float))
+
+
+# ---------------------------------------------------------------------------
+# Combinações de regras (dependem das suposições S1, S2 e S3)
+# ---------------------------------------------------------------------------
+class TestSuposicoesCombinacao:
+    def test_vip_e_pedido_a_partir_de_200_somam_descontos(self):
+        # SUPOSIÇÃO S1: 200 * (1 - 0.15) = 170.00
+        # (se os descontos forem aplicados em cascata: 200 * 0.90 * 0.95 = 171.00)
+        assert calcular_total(200.0, vip=True) == 170.0
+
+    def test_vip_e_pedido_alto(self):
+        # SUPOSIÇÃO S1: 300 * 0.85 = 255.00
+        assert calcular_total(300.0, vip=True) == 255.0
+
+    def test_cupom_aplicado_apos_desconto_por_valor(self):
+        # SUPOSIÇÃO S2: 200 * 0.90 - 10 = 170.00
+        assert calcular_total(200.0, cupom=10.0) == 170.0
+
+    def test_cupom_aplicado_apos_desconto_vip(self):
+        # SUPOSIÇÃO S2: 100 * 0.95 - 5 = 90.00
+        assert calcular_total(100.0, vip=True, cupom=5.0) == 90.0
+
+    def test_todos_os_descontos_combinados(self):
+        # SUPOSIÇÕES S1 + S2: 200 * 0.85 - 10 = 160.00
+        assert calcular_total(200.0, vip=True, cupom=10.0) == 160.0
+
+    def test_limite_de_200_avaliado_sobre_subtotal_original(self):
+        # SUPOSIÇÃO S3: o cupom não tira o pedido da faixa de desconto
+        # 205 * 0.90 - 10 = 174.50
+        assert calcular_total(205.0, cupom=10.0) == 174.5
+
+    def test_combinacao_com_arredondamento(self):
+        # SUPOSIÇÕES S1 + S2: 333.33 * 0.85 - 1.11 = 282.2205 - 1.11 = 281.1105 -> 281.11
+        assert calcular_total(333.33, vip=True, cupom=1.11) == 281.11

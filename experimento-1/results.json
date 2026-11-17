@@ -1,0 +1,264 @@
+{
+ "A1": {
+  "buggy": [
+   20,
+   0
+  ],
+  "correct": [
+   18,
+   2
+  ],
+  "cov": [
+   100.0,
+   4,
+   4,
+   2,
+   2
+  ],
+  "killed": [
+   "> vira >=",
+   "> vira <",
+   "100 vira 101",
+   "0.9 vira 1.9",
+   "arredonda 3 casas",
+   "return total vira None"
+  ],
+  "n_mut": 6,
+  "lines100": [
+   "assert calcular_desconto(100) == 100"
+  ]
+ },
+ "A2": {
+  "buggy": [
+   18,
+   0
+  ],
+  "correct": [
+   16,
+   2
+  ],
+  "cov": [
+   100.0,
+   4,
+   4,
+   2,
+   2
+  ],
+  "killed": [
+   "> vira >=",
+   "> vira <",
+   "100 vira 101",
+   "0.9 vira 1.9",
+   "arredonda 3 casas",
+   "return total vira None"
+  ],
+  "n_mut": 6,
+  "lines100": [
+   "(100, 100)",
+   "assert calcular_desconto(100) == 100"
+  ]
+ },
+ "A3": {
+  "buggy": [
+   23,
+   0
+  ],
+  "correct": [
+   20,
+   3
+  ],
+  "cov": [
+   100.0,
+   4,
+   4,
+   2,
+   2
+  ],
+  "killed": [
+   "> vira >=",
+   "> vira <",
+   "100 vira 101",
+   "0.9 vira 1.9",
+   "arredonda 3 casas",
+   "return total vira None"
+  ],
+  "n_mut": 6,
+  "lines100": [
+   "assert calcular_desconto(100) == 100"
+  ]
+ },
+ "B1": {
+  "buggy": [
+   16,
+   2
+  ],
+  "correct": [
+   18,
+   0
+  ],
+  "cov": [
+   100.0,
+   4,
+   4,
+   2,
+   2
+  ],
+  "killed": [
+   "> vira <",
+   "100 vira 101",
+   "0.9 vira 1.9",
+   "arredonda 3 casas",
+   "return total vira None"
+  ],
+  "n_mut": 6,
+  "lines100": [
+   "assert calcular_desconto(100) == pytest.approx(90.00)",
+   "assert calcular_desconto(100.00) == pytest.approx(90.00)"
+  ]
+ },
+ "B2": {
+  "buggy": [
+   13,
+   1
+  ],
+  "correct": [
+   14,
+   0
+  ],
+  "cov": [
+   100.0,
+   4,
+   4,
+   2,
+   2
+  ],
+  "killed": [
+   "> vira <",
+   "100 vira 101",
+   "0.9 vira 1.9",
+   "arredonda 3 casas",
+   "return total vira None"
+  ],
+  "n_mut": 6,
+  "lines100": [
+   "assert calcular_desconto(100.00) == pytest.approx(90.00)"
+  ]
+ },
+ "B3": {
+  "buggy": [
+   10,
+   3
+  ],
+  "correct": [
+   13,
+   0
+  ],
+  "cov": [
+   100.0,
+   4,
+   4,
+   2,
+   2
+  ],
+  "killed": [
+   "> vira <",
+   "100 vira 101",
+   "0.9 vira 1.9",
+   "arredonda 3 casas",
+   "return total vira None"
+  ],
+  "n_mut": 6,
+  "lines100": [
+   "assert calcular_desconto(100) == pytest.approx(90.00)",
+   "assert calcular_desconto(100.00) == pytest.approx(90.00)",
+   "assert calcular_desconto(100) == pytest.approx(90.00)"
+  ]
+ },
+ "C1": {
+  "buggy": [
+   35,
+   3
+  ],
+  "correct": [
+   38,
+   0
+  ],
+  "cov": [
+   100.0,
+   4,
+   4,
+   2,
+   2
+  ],
+  "killed": [
+   "> vira <",
+   "100 vira 101",
+   "0.9 vira 1.9",
+   "arredonda 3 casas",
+   "return total vira None"
+  ],
+  "n_mut": 6,
+  "lines100": [
+   "assert calcular_desconto(100.0) == 90.0",
+   "assert calcular_desconto(100) == 90.0"
+  ]
+ },
+ "C2": {
+  "buggy": [
+   39,
+   2
+  ],
+  "correct": [
+   41,
+   0
+  ],
+  "cov": [
+   100.0,
+   4,
+   4,
+   2,
+   2
+  ],
+  "killed": [
+   "> vira <",
+   "100 vira 101",
+   "0.9 vira 1.9",
+   "arredonda 3 casas",
+   "return total vira None"
+  ],
+  "n_mut": 6,
+  "lines100": [
+   "assert calcular_desconto(100.00) == pytest.approx(90.00, abs=1e-9)",
+   "assert calcular_desconto(100) == pytest.approx(90.00, abs=1e-9)"
+  ]
+ },
+ "C3": {
+  "buggy": [
+   29,
+   3
+  ],
+  "correct": [
+   32,
+   0
+  ],
+  "cov": [
+   100.0,
+   4,
+   4,
+   2,
+   2
+  ],
+  "killed": [
+   "> vira <",
+   "100 vira 101",
+   "0.9 vira 1.9",
+   "arredonda 3 casas",
+   "return total vira None"
+  ],
+  "n_mut": 6,
+  "lines100": [
+   "assert calcular_desconto(100.00) == pytest.approx(90.00, abs=1e-9)",
+   "assert calcular_desconto(100.00) < calcular_desconto(99.99)"
+  ]
+ }
+}

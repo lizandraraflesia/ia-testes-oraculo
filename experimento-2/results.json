@@ -1,0 +1,143 @@
+{
+ "B1": {
+  "codigo": {
+   "passed": 20,
+   "failed": 2,
+   "xfailed": 0,
+   "falhas": [
+    "test_cupom_maior_que_subtotal_nao_gera_valor_negativo",
+    "test_limite_de_200_considera_o_subtotal_antes_do_cupom"
+   ]
+  },
+  "intencao_po": {
+   "passed": 15,
+   "failed": 7,
+   "xfailed": 0,
+   "falhas": [
+    "test_cliente_vip_a_partir_de_200_acumula_descontos",
+    "test_cupom_com_cliente_vip_abaixo_de_200",
+    "test_cupom_com_pedido_que_continua_acima_de_200",
+    "test_limite_de_200_considera_o_subtotal_antes_do_cupom",
+    "test_todos_os_descontos_combinados",
+    "test_valor_final_arredondado_para_2_casas[123.45-True-10.1-107.68]",
+    "test_valor_final_arredondado_para_2_casas[250.0-True-0.0-212.5]"
+   ]
+  }
+ },
+ "B2": {
+  "codigo": {
+   "passed": 26,
+   "failed": 0,
+   "xfailed": 2,
+   "falhas": []
+  },
+  "intencao_po": {
+   "passed": 20,
+   "failed": 7,
+   "xfailed": 1,
+   "falhas": [
+    "TestArredondamento::test_arredonda_com_todos_os_descontos",
+    "TestCupom::test_cupom_com_desconto_por_valor",
+    "TestCupom::test_cupom_com_vip",
+    "TestCupom::test_cupom_com_vip_e_desconto_por_valor",
+    "TestDescontoVip::test_vip_a_partir_de_200_acumula_descontos",
+    "TestDescontoVip::test_vip_pedido_alto_acumula_descontos",
+    "TestRegrasAmbiguas::test_cupom_maior_que_subtotal_nao_gera_valor_negativo"
+   ]
+  }
+ },
+ "B3": {
+  "codigo": {
+   "passed": 19,
+   "failed": 0,
+   "xfailed": 1,
+   "falhas": []
+  },
+  "intencao_po": {
+   "passed": 14,
+   "failed": 6,
+   "xfailed": 0,
+   "falhas": [
+    "test_cliente_vip_a_partir_de_200_acumula_descontos",
+    "test_cupom_maior_que_subtotal_nao_deve_gerar_total_negativo",
+    "test_cupom_que_leva_pedido_abaixo_de_200_remove_desconto_de_10",
+    "test_cupom_que_mantem_pedido_em_200_preserva_desconto_de_10",
+    "test_todos_os_descontos_combinados",
+    "test_vip_com_cupom_aplica_percentual_sobre_valor_apos_cupom"
+   ]
+  }
+ },
+ "C1": {
+  "codigo": {
+   "passed": 27,
+   "failed": 6,
+   "xfailed": 0,
+   "falhas": [
+    "TestCasosLimiteNaoEspecificados::test_cupom_maior_que_total_nao_gera_valor_negativo",
+    "TestCasosLimiteNaoEspecificados::test_cupom_negativo_lanca_erro",
+    "TestCasosLimiteNaoEspecificados::test_subtotal_negativo_lanca_erro",
+    "TestCombinacaoDeDescontos::test_cupom_aplicado_apos_desconto_percentual",
+    "TestCombinacaoDeDescontos::test_faixa_de_200_considera_subtotal_antes_do_cupom",
+    "TestCombinacaoDeDescontos::test_todos_os_descontos_juntos"
+   ]
+  },
+  "intencao_po": {
+   "passed": 29,
+   "failed": 4,
+   "xfailed": 0,
+   "falhas": [
+    "TestCasosLimiteNaoEspecificados::test_cupom_negativo_lanca_erro",
+    "TestCasosLimiteNaoEspecificados::test_subtotal_negativo_lanca_erro",
+    "TestCombinacaoDeDescontos::test_todos_os_descontos_juntos",
+    "TestCombinacaoDeDescontos::test_vip_com_pedido_acima_de_200_descontos_sao_cumulativos_e_somados"
+   ]
+  }
+ },
+ "C2": {
+  "codigo": {
+   "passed": 20,
+   "failed": 3,
+   "xfailed": 0,
+   "falhas": [
+    "TestCombinacoesRegraAConfirmar::test_pedido_a_partir_de_200_com_cupom",
+    "TestCombinacoesRegraAConfirmar::test_todos_os_descontos_juntos",
+    "TestCombinacoesRegraAConfirmar::test_todos_os_descontos_juntos_sao_menores_que_cada_um_isolado"
+   ]
+  },
+  "intencao_po": {
+   "passed": 20,
+   "failed": 3,
+   "xfailed": 0,
+   "falhas": [
+    "TestCombinacoesRegraAConfirmar::test_todos_os_descontos_juntos",
+    "TestCombinacoesRegraAConfirmar::test_todos_os_descontos_juntos_sao_menores_que_cada_um_isolado",
+    "TestCombinacoesRegraAConfirmar::test_vip_com_pedido_a_partir_de_200"
+   ]
+  }
+ },
+ "C3": {
+  "codigo": {
+   "passed": 38,
+   "failed": 5,
+   "xfailed": 0,
+   "falhas": [
+    "TestSuposicoesCombinacao::test_combinacao_com_arredondamento",
+    "TestSuposicoesCombinacao::test_cupom_aplicado_apos_desconto_por_valor",
+    "TestSuposicoesCombinacao::test_cupom_aplicado_apos_desconto_vip",
+    "TestSuposicoesCombinacao::test_limite_de_200_avaliado_sobre_subtotal_original",
+    "TestSuposicoesCombinacao::test_todos_os_descontos_combinados"
+   ]
+  },
+  "intencao_po": {
+   "passed": 39,
+   "failed": 4,
+   "xfailed": 0,
+   "falhas": [
+    "TestSuposicoesCombinacao::test_combinacao_com_arredondamento",
+    "TestSuposicoesCombinacao::test_todos_os_descontos_combinados",
+    "TestSuposicoesCombinacao::test_vip_e_pedido_a_partir_de_200_somam_descontos",
+    "TestSuposicoesCombinacao::test_vip_e_pedido_alto"
+   ]
+  }
+ }
+}

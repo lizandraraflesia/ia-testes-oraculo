@@ -1,0 +1,3 @@
+Gere testes unitários com pytest para a função calcular_desconto(total), que está no arquivo desconto.py (import: from desconto import calcular_desconto). Você não tem acesso à implementação.
+Requisito de negócio: pedidos a partir de R$ 100,00 recebem 10% de desconto. O valor final deve ser arredondado para 2 casas decimais.
+Responda apenas com o código Python do arquivo de testes, sem explicações e sem cercas de markdown.

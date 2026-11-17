@@ -1,0 +1,36 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+rootdir: /tmp/claude-0/-home-claude/18dd6429-fa3b-53a9-86c2-da8b874cdd40/scratchpad/exp/sb
+plugins: platformdirs-4.13.5, anyio-4.15.1, cov-7.1.0
+collecting ... collected 20 items
+
+test_desconto.py::test_aplica_desconto_de_10_por_cento_acima_de_100[101-90.9] PASSED [  5%]
+test_desconto.py::test_aplica_desconto_de_10_por_cento_acima_de_100[150-135.0] PASSED [ 10%]
+test_desconto.py::test_aplica_desconto_de_10_por_cento_acima_de_100[200-180.0] PASSED [ 15%]
+test_desconto.py::test_aplica_desconto_de_10_por_cento_acima_de_100[1000-900.0] PASSED [ 20%]
+test_desconto.py::test_aplica_desconto_de_10_por_cento_acima_de_100[100.5-90.45] PASSED [ 25%]
+test_desconto.py::test_aplica_desconto_de_10_por_cento_acima_de_100[100.01-90.01] PASSED [ 30%]
+test_desconto.py::test_nao_aplica_desconto_ate_100[0] PASSED             [ 35%]
+test_desconto.py::test_nao_aplica_desconto_ate_100[1] PASSED             [ 40%]
+test_desconto.py::test_nao_aplica_desconto_ate_100[50] PASSED            [ 45%]
+test_desconto.py::test_nao_aplica_desconto_ate_100[99.99] PASSED         [ 50%]
+test_desconto.py::test_nao_aplica_desconto_ate_100[100] PASSED           [ 55%]
+test_desconto.py::test_limite_exato_de_100_nao_recebe_desconto PASSED    [ 60%]
+test_desconto.py::test_valor_logo_acima_do_limite_recebe_desconto PASSED [ 65%]
+test_desconto.py::test_resultado_com_desconto_tem_no_maximo_duas_casas_decimais PASSED [ 70%]
+test_desconto.py::test_sem_desconto_retorna_o_mesmo_valor_sem_arredondar PASSED [ 75%]
+test_desconto.py::test_valor_negativo_retorna_o_proprio_valor PASSED     [ 80%]
+test_desconto.py::test_retorna_float_quando_ha_desconto PASSED           [ 85%]
+test_desconto.py::test_retorna_tipo_original_quando_nao_ha_desconto PASSED [ 90%]
+test_desconto.py::test_entrada_invalida_lanca_type_error PASSED          [ 95%]
+test_desconto.py::test_entrada_none_lanca_type_error PASSED              [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.13.18-final-0 _______________
+
+Name          Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------
+desconto.py       4      0      2      0   100%
+---------------------------------------------------------
+TOTAL             4      0      2      0   100%
+============================== 20 passed in 0.06s ==============================

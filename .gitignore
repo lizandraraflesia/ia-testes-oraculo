@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+sandbox/
+sb/
+.coverage
+cov.json
+.pytest_cache/
