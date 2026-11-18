@@ -1,6 +1,6 @@
 # Experimento: o teste que confirma o bug
 
-Material de apoio do post estendido **"O teste que confirma o bug: um experimento sobre testes gerados por IA e o papel do QA"** (Conecta CESAR, 2026).
+Material de apoio do post estendido **"O teste que confirma o bug: experimentos sobre testes gerados por IA e o papel do QA"** (Conecta CESAR, 2026).
 
 ## Pergunta
 

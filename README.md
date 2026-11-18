@@ -2,7 +2,7 @@
 
 [![Reproduzir experimentos](https://github.com/lizandraraflesia/ia-testes-oraculo/actions/workflows/experimentos.yml/badge.svg)](https://github.com/lizandraraflesia/ia-testes-oraculo/actions/workflows/experimentos.yml)
 
-Material de apoio do post estendido **"O teste que confirma o bug: um experimento sobre testes gerados por IA e o papel do QA"** (Conecta CESAR, 2026).
+Material de apoio do post estendido **"O teste que confirma o bug: experimentos sobre testes gerados por IA e o papel do QA"** (Conecta CESAR, 2026).
 
 - [`experimento-1/`](experimento-1/README.md): função com bug de fronteira (`>` em vez de `>=`). A IA gera testes a partir do código, do código + requisito ou só do requisito. Base da Figura 1 e do Quadro 1 do post.
 - [`experimento-2/`](experimento-2/README.md): requisito realista com lacunas (faixa, VIP e cupom). A IA sinaliza as lacunas? Qual interpretação os testes congelam? Base da caixa "Mas não basta dar o requisito para a IA?".
