@@ -42,14 +42,16 @@ Diferente do experimento 1, aqui o prompt **não proíbe explicações**, para v
 
 **Mas cada suíte já vem com uma escolha feita.** Rodando cada suíte contra o código e contra a intenção do PO:
 
-| Suíte | Contra o código | Contra a intenção do PO |
+| Suíte | Contra o código | Testes que contradizem a intenção do PO |
 |---|---|---|
-| B1 | 2 falhas (G1 e G4, marcadas como possíveis bugs) | 7 falhas |
-| B2 | todas passam (2 xfail: G1 e G4) | 7 falhas |
-| B3 | todas passam (1 xfail: G4) | 6 falhas |
-| C1 | 6 falhas | 4 falhas |
-| C2 | 3 falhas | 3 falhas |
-| C3 | 5 falhas | 4 falhas |
+| B1 | 2 falhas (G1 e G4, marcadas como possíveis bugs) | 7 |
+| B2 | todas passam (2 xfail: G1 e G4) | 6 |
+| B3 | todas passam (1 xfail: G4) | 5 |
+| C1 | 6 falhas | 4 |
+| C2 | 3 falhas | 3 |
+| C3 | 5 falhas | 4 |
+
+Em B2 e B3, um teste a mais aparece como falha no pytest quando roda contra a intenção do PO: é um `xfail(strict=True)` sobre o total negativo que **passa**, e o pytest conta isso como falha (XPASS estrito). Esse teste concorda com o PO, por isso não entra na contagem acima. O `results.json` separa os dois casos (`falhas` e `xpass_estrito`).
 
 Por lacuna:
 
